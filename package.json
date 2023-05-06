@@ -1,19 +1,27 @@
 {
   "name": "afc-img-twitter-bot",
   "version": "1.0.0",
-  "type": "module",
   "description": "A twitter bot that tweets an Arsenal FC image a day",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prebuild": "rd /s /q dist",
+    "build": "tsc",
+    "tweet:local": "node .\\dist\\index.js",
+    "predeploy": "npm run build",
+    "deploy": "gcloud functions deploy afc-img-tweet --entry-point=main --memory=256mb --runtime=nodejs18 --trigger-http --project=afc-img"
   },
   "author": "Jing Quan Kueh",
   "license": "ISC",
   "dependencies": {
-    "@google-cloud/functions-framework": "^3.2.0",
     "axios": "^1.3.4",
     "dotenv": "^16.0.3",
     "googleapis": "^118.0.0",
+    "lodash": "^4.17.21",
     "twitter-api-v2": "^1.14.2"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.194",
+    "@types/node": "^18.16.3",
+    "typescript": "^5.0.4"
   }
 }
