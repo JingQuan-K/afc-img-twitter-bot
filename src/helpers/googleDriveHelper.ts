@@ -1,10 +1,7 @@
 import _ from 'lodash';
 import { drive_v3 } from 'googleapis';
 import GoogleDrive from '../clients/GoogleDriveClient';
-import dotenv from 'dotenv';
 import { TWEETED_IMAGE_PREFIX, NEXT_IMAGE_PREFIX } from '../constant';
-dotenv.config();
-
 const FOLDER_ID = process.env.GOOGLE_DRIVE_FOLDER_ID;
 
 async function updateFileName(fileId: string, fileName: string) {
@@ -26,12 +23,12 @@ async function getImageData() {
   let imageData: drive_v3.Schema$File = {};
 
   if (files.length === 0) {
-    throw new Error(`No files could not be found in google drive`);
-  } else {
-    imageData =
-      files.find((file) => file.name?.includes(NEXT_IMAGE_PREFIX)) ??
-      files[Math.floor(Math.random() * files.length)];
+    throw new Error(`No files found in google drive`);
   }
+
+  imageData =
+    files.find((file) => file.name?.includes(NEXT_IMAGE_PREFIX)) ??
+    files[Math.floor(Math.random() * files.length)];
 
   return {
     id: imageData.id || '',

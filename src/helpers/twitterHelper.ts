@@ -6,6 +6,8 @@ async function uploadImage(imageBuffer: Buffer, mimeType: string) {
 }
 
 async function addAltTextToImage(mediaId: string, imageName: string) {
+  if (process.env.ALLOW_IMAGE_ALT_TEXT === 'false') return;
+
   await TwitterClient.v1.createMediaMetadata(mediaId, {
     alt_text: { text: sanitizeImageName(imageName) || '' },
   });

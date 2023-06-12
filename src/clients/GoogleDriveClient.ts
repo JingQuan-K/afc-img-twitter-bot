@@ -1,6 +1,4 @@
 import { google } from 'googleapis';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const auth = new google.auth.GoogleAuth({
   credentials: JSON.parse(process.env.GOOGLE_SA_KEY || ''),

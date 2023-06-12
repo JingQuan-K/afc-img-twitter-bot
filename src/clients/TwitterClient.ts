@@ -1,6 +1,4 @@
 import { TwitterApi } from 'twitter-api-v2';
-import dotenv from 'dotenv';
-dotenv.config();
 
 const appKey = process.env.TWITTER_API_KEY as string;
 const appSecret = process.env.TWITTER_API_SECRET as string;
