@@ -1,13 +1,10 @@
 {
   "name": "afc-img-twitter-bot",
   "version": "1.0.0",
-  "description": "A twitter bot that tweets an Arsenal FC image a day",
+  "description": "A twitter bot that tweets an Arsenal FC image every 12 hours",
   "main": "dist/index.js",
   "scripts": {
-    "prebuild": "rd /s /q dist",
     "build": "tsc",
-    "tweet:local": "node .\\dist\\index.js",
-    "predeploy": "npm run build",
     "deploy": "gcloud functions deploy afc-img-tweet --entry-point=main --memory=256mb --runtime=nodejs18 --trigger-http --project=afc-img"
   },
   "author": "Jing Quan Kueh",
