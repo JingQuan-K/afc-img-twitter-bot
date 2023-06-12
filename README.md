@@ -1,5 +1,11 @@
-# afc_img Twitter Bot
+# Arsenal Image Twitter Bot
 
-## Description
+A twitter bot that tweets an image related to Arsenal FC every 12 hours. <br>
+Check it out here (**https://twitter.com/afc_img**)
 
-A twitter bot that tweets an Arsenal FC image once per day.
+## Features
+
+- Fetches an image from a designated Google Drive folder using **Google API**.
+- Tweets the retrieved image using **Twitter API**.
+- Deployed on **Google Cloud Platform (GCP)** as a cloud function.
+- Cloud function triggered every 12 hours using **Google Cloud Scheduler**.
